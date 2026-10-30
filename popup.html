@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 280px; margin: 0; font: 14px system-ui, sans-serif; color: #111; }
+  header { background: #dc2626; color: #fff; padding: 12px 16px; font-weight: 600; font-size: 15px; }
+  .row { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid #eee; }
+  .host { color: #666; font-size: 12px; margin-top: 2px; word-break: break-all; }
+  .count { font-size: 28px; font-weight: 700; color: #dc2626; }
+  .switch { position: relative; width: 40px; height: 22px; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider { position: absolute; inset: 0; background: #ccc; border-radius: 22px; cursor: pointer; transition: .2s; }
+  .slider:before { content: ""; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .2s; }
+  input:checked + .slider { background: #16a34a; }
+  input:checked + .slider:before { transform: translateX(18px); }
+  button { width: calc(100% - 32px); margin: 12px 16px; padding: 8px; border: 1px solid #ddd; background: #f9fafb; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  button:hover { background: #f1f5f9; }
+</style>
+</head>
+<body>
+<header>Simple Ad Blocker</header>
+<div class="row">
+  <div><div>Blocked on this page</div><div class="host" id="note">(counts show for unpacked installs)</div></div>
+  <div class="count" id="count">0</div>
+</div>
+<div class="row">
+  <span>Ad blocking</span>
+  <label class="switch"><input type="checkbox" id="enabled"><span class="slider"></span></label>
+</div>
+<div class="row">
+  <div><div>Allow ads on this site</div><div class="host" id="host"></div></div>
+  <label class="switch"><input type="checkbox" id="site"><span class="slider"></span></label>
+</div>
+<button id="reload">Reload page</button>
+<script src="popup.js"></script>
+</body>
+</html>
